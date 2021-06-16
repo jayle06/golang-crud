@@ -16,7 +16,7 @@ func ConfigBookRouter(router *fiber.Router) {
 
 func ConfigReviewRouter(router *fiber.Router) {
 	(*router).Get("/reviews/books/:id", controller.GetReviewByBookId)
-	(*router).Get("/reviews/", controller.GetAllReview)
+	(*router).Get("/reviews", controller.GetAllReview)
 	(*router).Patch("/reviews/:id", controller.UpdateReviewById)
-	(*router).Post("/reviews/", controller.CreateNewReView)
+	(*router).Post("/reviews", controller.CreateNewReView)
 }
