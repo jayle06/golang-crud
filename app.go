@@ -22,7 +22,7 @@ func main() {
 	bookRouter := app.Group("/api/v1")
 	routes.ConfigBookRouter(&bookRouter)
 
-	reviewRouter := app.Group("/api/v1/reviews")
+	reviewRouter := app.Group("/api/v1")
 	routes.ConfigReviewRouter(&reviewRouter)
 
 	app.Listen(":3000")
