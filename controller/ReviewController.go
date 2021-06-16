@@ -44,3 +44,8 @@ func GetReviewByBookId(c *fiber.Ctx) error {
 	id, _ := c.ParamsInt("id")
 	return c.JSON(service.GetReviewByBookId(int64(id)))
 }
+
+func DeleteReviewById(c *fiber.Ctx) error {
+	id, _ := c.ParamsInt("id")
+	return c.JSON(service.DeleteReviewById(int64(id)))
+}

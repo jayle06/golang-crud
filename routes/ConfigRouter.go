@@ -19,4 +19,5 @@ func ConfigReviewRouter(router *fiber.Router) {
 	(*router).Get("/reviews", controller.GetAllReview)
 	(*router).Patch("/reviews/:id", controller.UpdateReviewById)
 	(*router).Post("/reviews", controller.CreateNewReView)
+	(*router).Delete("/reviews/:id", controller.DeleteReviewById)
 }

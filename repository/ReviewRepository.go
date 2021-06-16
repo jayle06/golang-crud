@@ -66,3 +66,12 @@ func (r *ReviewRepo) GetReviewByBookId(bookId int64) (result map[int64][]*model.
 	}
 	return result
 }
+
+func (r *ReviewRepo) DeleteReviewById(Id int64) error {
+	if _, ok := r.reviews[Id]; ok {
+		delete(r.reviews, Id)
+		return nil
+	} else {
+		return errors.New("book not found")
+	}
+}
