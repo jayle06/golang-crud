@@ -17,16 +17,15 @@ func CreateReview(review *model.Review) *model.Review {
 	return newReview
 }
 
-func DeleteReviewById(Id int64) error {
+func DeleteReviewById(Id int64) (error, *model.Book) {
 	review, _ := repository.Reviews.FindReviewById(Id)
 	bookID := review.BookId
 	book, _ := FindBookById(bookID)
-	UpdateBookRating(book)
-	return repository.Reviews.DeleteReviewById(Id)
+	return repository.Reviews.DeleteReviewById(Id), UpdateBookRating(book)
 }
 
 func UpdateReView(Id int64, newReview *model.Review) *model.Review {
-	err := DeleteReviewById(Id)
+	err := repository.Reviews.DeleteReviewById(Id)
 	if err != nil {
 		return nil
 	}

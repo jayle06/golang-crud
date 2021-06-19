@@ -47,5 +47,13 @@ func GetReviewByBookId(c *fiber.Ctx) error {
 
 func DeleteReviewById(c *fiber.Ctx) error {
 	id, _ := c.ParamsInt("id")
-	return c.JSON(service.DeleteReviewById(int64(id)))
+	err, _ := service.DeleteReviewById(int64(id))
+	if err != nil {
+		return err
+	}
+
+	return c.JSON(fiber.Map{
+		"message":     "Review was deleted",
+		"rating book": "rating was updated",
+	})
 }
